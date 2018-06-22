@@ -7,18 +7,107 @@
     <meta name="author" content="">
     <title>Kīlauea lidar</title>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="css/style.css"></link>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"></link>
   </head>
 
   <body>
-    <div id="app"/>
-    <script type="text/babel" src="app.js"></script>
+    <div class="navbar navbar-default" id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 col-sm-7">
+                    <a href="/">
+                        <img
+                            id="banner"
+                            src="resources/images/banner.png"
+                        />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12" style="padding-bottom:64px;">
+                <h1
+                    class="center-block"
+                    style="color:#192854;padding-top:36px;padding-bottom:24px"
+                >
+                    Kīlauea lidar
+                </h1>
+                <a
+                    class="lead row center-block"
+                    href="/data/kilauea.html" }
+                >
+                    <img
+                        class="img-responsive thumb img-thumbnail"
+                        src="resources/images/kilauea.jpg"
+                    />
+                </a>
+                <div class="lead row">
+                    <div class="col-xs-3"></div>
+                    <div class="col-xs-3">
+                        <a href="https://www.erdc.usace.army.mil/Locations/CRREL/Research.aspx">
+                            <img
+                                style="height: 100px"
+                                class="img-responsive"
+                                src="resources/images/rsgis-logo.jpg"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="https://volcanoes.usgs.gov/vhp/observatories.html">
+                            <img
+                                style="height: 100px"
+                                class="img-responsive"
+                                src="resources/images/usgs-logo.jpg"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-xs-3"></div>
+                </div>
+                <div class="lead row">
+                    <div class="col-xs-12 col-sm-2"></div>
+                    <div class="col-xs-12 col-sm-8">
+                        <h4>LiDAR tiles</h4>
+                        <pre>s3://grid-partner-share/Kilawea_1kmtiles/Pointclouds</pre>
+                        <h4>0.5m DTM</h4>
+                        <pre>s3://grid-partner-share/Kilawea_1kmtiles/DTM_0.5m</pre>
+                        <h4>0.5m DTM filled</h4>
+                        <pre>s3://grid-partner-share/Kilawea_1kmtiles/DTM_0.5m_filled</pre>
+                        <h4>LiDAR flight lines</h4>
+                        <pre>s3://grid-partner-share/Kilawea</pre>
+                    </div>
+                    <div class="col-xs-12 col-sm-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="footer-content">
+                <div class="row">
+                    <div class="col-xs-5"></div>
+                    <div class="col-xs-2">
+                        <a href="/">
+                            <img
+                                class="center-block"
+                                id="footer-icon"
+                                src="resources/images/entwine-logo.png"
+                            />
+                        </a>
+                    </div>
+                    <div class="col-xs-5">
+                        <p id="copyright">
+                            Entwine © Hobu, Inc.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
   </body>
 </html>
 
