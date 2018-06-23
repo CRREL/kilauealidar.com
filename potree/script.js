@@ -382,12 +382,12 @@ window.toggleAnnotations = () => {
     if (turningOn) {
         $('.annotation').each(function() { $(this).removeClass('display_none') })
         el.attr('state', 'on');
-        el.attr('src', '/resources/icons/entwine-annotations-on.svg');
+        el.attr('src', '/potree/resources/icons/entwine-annotations-on.svg');
     }
     else {
         $('.annotation').each(function() { $(this).addClass('display_none') })
         el.attr('state', 'off');
-        el.attr('src', '/resources/icons/entwine-annotations-off.svg');
+        el.attr('src', '/potree/resources/icons/entwine-annotations-off.svg');
     }
 }
 
