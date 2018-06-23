@@ -14,10 +14,10 @@ markdown: kramdown
 
 
 ### content configuration ###
-title:       "GDAL SRS Barn Raising"
-keywords:    "SRS, WKT2, Coordinate Systems, SQLite"
-description: "An fundraising effort to improve the coordinate system handling of PROJ, libgeotiff, and GDAL"
-source_link: "https://github.com/hobu/gdalbarn"
+title:       "Kilauea LiDAR"
+keywords:    "LiDAR, LAZ, PDAL, Volcano"
+description: "LiDAR data access for 2018 Kilauea eruptions"
+source_link: "https://github.com/CRREL/kilauealidar.com"
 favicon:     "img/favicon.ico"
 touch_icon:  "img/apple-touch-icon.png"
 google_analytics_key: ## put YOUR key here to enable tracking! (blank to disable)
