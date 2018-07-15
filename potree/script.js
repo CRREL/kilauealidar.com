@@ -28,7 +28,6 @@ var defaults = {
     material: Potree.PointColorType.RGB,
     shape: Potree.PointShape.SQUARE,
     pointBudget: 3 * 1000 * 1000,
-    intensityRange: [0, 256],
     weightClassification: 1,
     fov: 80,
     opacity: 1,
@@ -77,8 +76,6 @@ var get = () => {
         pb: maybe('pointBudget', viewer.getPointBudget()),
         m: maybe('material', mt.pointColorType),
         sh: maybe('shape', mt.shape),
-        ir: maybe('intensityRange',
-                [mt.intensityRange[0], mt.intensityRange[1]]),
         era: maybe('elevationRange',
                 [mt.elevationRange[0], mt.elevationRange[1]]),
         cg: maybe('rgbGamma', mt.rgbGamma),
@@ -157,10 +154,6 @@ var set = (k, v) => {
             break;
         case 'background': case 'bg':
             viewer.setBackground(v);
-            break;
-        case 'intensityRange': case 'ir':
-            viewer.scene.pointclouds.forEach((p) =>
-                    p.material.intensityRange = [v[0], v[1]]);
             break;
         case 'elevationRange': case 'era':
             viewer.scene.pointclouds.forEach((p) =>
@@ -309,6 +302,10 @@ var init = (name) => {
 
         viewer.useHQ = true;
 
+        if (viewer.useEDL) {
+            // TODO Check the EDL box.
+        }
+
         viewer.addEventListener('point_budget_changed', (e) => {
             if (typeof(Storage) !== 'undefined') {
                 console.log('Storing pointBudget');
@@ -328,7 +325,7 @@ var init = (name) => {
 var loaded = 0;
 
 var http = 'http';
-var base = 'https://na-c.entwine.io/'
+var base = 'http://na.entwine.io/'
 if (getQueryParam('b')) {
     base = getQueryParam('b');
     if (base[base.length - 1] != '/') base += '/';
@@ -336,24 +333,45 @@ if (getQueryParam('b')) {
 
 var post = 'entwine.json';
 
-resources.forEach((path) => {
+var pcs = new Array(resources.length);
+
+resources.forEach((path, i) => {
+    var name = null;
+
+    if (typeof(path) != 'string') {
+        name = path.name;
+        path = path.path;
+    }
+
     if (path.substring(0, http.length) != http) path = base + path;
     if (path.indexOf(post) == -1) {
         if (path[path.length - 1] != '/') path += '/';
         path += post;
     }
 
-    var name = path.replace('/entwine.json', '').split('/');
-    name = name[name.length - 1];
+    if (!name) {
+        name = path.replace('/entwine.json', '').split('/');
+        name = name[name.length - 1];
+    }
 
-    console.log('Loading', name, path);
+    console.log('Loading', name, path, i);
 
+    var a = i;
     Potree.loadPointCloud(path, name, (e) => {
-        console.log('Loaded', name);
-        viewer.scene.addPointCloud(e.pointcloud);
+        console.log('Loaded', name, a);
+        pcs[a] = e.pointcloud;
         console.log(e.pointcloud);
 
         if (++loaded == resources.length) {
+            for (var i = 0; i < resources.length; ++i) {
+                if (resources[i].name == 'NCALM') {
+                    pcs[i].material.intensityRange = [0, 256];
+                }
+                else pcs[i].material.intensityRange = [0, 65536];
+
+                viewer.scene.addPointCloud(pcs[i]);
+            }
+
             console.log('All point clouds loaded');
             viewer.fitToScreen();
             // viewer.scene.camera.near = 10;

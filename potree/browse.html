@@ -33,7 +33,16 @@
     <script src="/potree/libs/clipboard.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         window.config = {
-            resource: 'kilauea-p',
+            resource: [
+                { name: 'NCALM', path: 'kilauea/ncalm-caldera' },
+                { name: 'TLS', path: 'kilauea/tls' },
+                { name: '06-2018', path: 'kilauea/06-2018' },
+                { name: '07-11-2018-helipod', path: 'kilauea/helipod-summit' },
+                { name: 'Day 1', path: 'kilauea/puna-lerz/day1' },
+                { name: 'Day 2', path: 'kilauea/puna-lerz/day2' },
+                { name: 'Day 3', path: 'kilauea/puna-lerz/day3' },
+                { name: 'Day 4', path: 'kilauea/puna-lerz/day4' }
+            ],
             edlStrength: 1,
             pointSize: 3,
             pointType: Potree.PointSizeType.FIXED,
@@ -63,7 +72,7 @@
                 cpos: [-17279049.765, 2198152.298, 1225.437],
                 ctgt: [-17279284.789, 2198437.478, 906.290],
             }, {
-                name: "Pu'u Huluhulu",
+                name: "Puʻu Huluhulu",
                 pos: [-17277363.710, 2198683.420, 1047.790],
                 cpos: [-17277321.159, 2198679.615, 1292.821],
                 ctgt: [-17277322.415, 2198717.377, 1021.188]
@@ -92,6 +101,16 @@
                 pos: [-17244866.480, 2209077.780, 238.560],
                 cpos: [-17244872.267, 2209009.327, 474.174],
                 ctgt: [-17244870.284, 2209053.706, 303.437]
+            }, {
+                name: 'Kilauea Caldera',
+                pos: [-17284779.740, 2203744.480, 1077.840],
+                cpos: [-17285060.004, 2199809.918, 4431.242],
+                ctgt: [-17285175.660, 2203120.100, 1095.730]
+            }, {
+                name: 'Halemaʻumaʻu Crater',
+                pos: [-17286091.114, 2202886.379, 1027.635],
+                cpos: [-17286074.456, 2201930.416, 1832.160],
+                ctgt: [-17286104.130, 2202779.740, 976.337]
             }],
             classificationFilter: [7]
         };
