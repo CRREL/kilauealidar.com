@@ -325,7 +325,7 @@ var init = (name) => {
 var loaded = 0;
 
 var http = 'http';
-var base = 'http://na.entwine.io/'
+var base = 'http://na-c.entwine.io/'
 if (getQueryParam('b')) {
     base = getQueryParam('b');
     if (base[base.length - 1] != '/') base += '/';
